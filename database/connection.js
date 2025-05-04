@@ -23,7 +23,7 @@ db.sequelize=sequelize
 db.books=bookModel(sequelize,DataTypes);
 db.users=userModel(sequelize,DataTypes)
 
-sequelize.sync({alter:true}).then(()=>{
+sequelize.sync({alter:false}).then(()=>{
   console.log('migrate successfully');
 })
 

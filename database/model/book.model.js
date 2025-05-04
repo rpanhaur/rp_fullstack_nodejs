@@ -17,16 +17,10 @@ const bookModel = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull:false
       
-
     }
 
-
   })
-
- 
-
   return book
-
 
 }
 
