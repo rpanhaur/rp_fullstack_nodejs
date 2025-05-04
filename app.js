@@ -6,7 +6,7 @@ const app=express();
 require('./database/connection')
 app.use(express.json())
 
-app.use('/',bookRoute)
+app.use('/api',bookRoute)
 
 
 

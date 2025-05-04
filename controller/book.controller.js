@@ -26,15 +26,40 @@ exports.addBook=async function(req,res){
  })
 }
 
-exports.deleteBook=(req,res)=>{
+exports.deleteBook=async function(req,res){
   // logic
+
+  const id=req.params.id
+
+  await books.destroy({
+    where:{
+      id
+    }
+  })
+
+
+
+
   res.json({
     message:'books deleted sucessfully'
   })
 }
 
-exports.updateBooks=(req,res)=>{
+exports.updateBooks=async function(req,res){
   // logic
+
+  const id=req.params.id
+  const {bookName,bookPrice,bookAuthor}=req.body
+  await books.update({
+    bookName,
+    bookPrice,
+    bookAuthor
+  },{
+    where:{
+      id
+    }
+  })
+
   res.json({
     message:'books update sucessfully'
   })
