@@ -9,8 +9,6 @@ app.use(express.json())
 app.use('/',bookRoute)
 
 
-//THIS IS FOR TEST
-//THIS ALSO TEST
 
 
 
