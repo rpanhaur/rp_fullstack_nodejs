@@ -3,18 +3,28 @@ const { books } = require("../database/connection")
 exports.fetchBook=async function(req,res)  {
 
   //logic
-
-  const data =await books.findAll()
+  try {
+    const data =await books.findAll()
   res.json({
     message:'books fetched sucessfully',
     data:data
   
   })
+    
+  } catch (error) {
+
+    console.log('Something is wrong ')
+    
+  }
+
+  
 }
 
 exports.addBook=async function(req,res){
   //logic
-  const {bookName,bookPrice,bookAuthor}=req.body
+
+  try {
+    const {bookName,bookPrice,bookAuthor}=req.body
   console.log();
   await books.create({
    bookName:bookName,
@@ -24,12 +34,19 @@ exports.addBook=async function(req,res){
  res.json({
    message:'books added sucessfully'
  })
+    
+  } catch (error) {
+
+    console.log('Something is wrong ')
+    
+  }
+  
 }
 
 exports.deleteBook=async function(req,res){
   // logic
-
-  const id=req.params.id
+  try {
+    const id=req.params.id
 
   await books.destroy({
     where:{
@@ -43,12 +60,19 @@ exports.deleteBook=async function(req,res){
   res.json({
     message:'books deleted sucessfully'
   })
+    
+  } catch (error) {
+    console.log('Something is wrong ')
+    
+  }
+
+  
 }
 
 exports.updateBooks=async function(req,res){
   // logic
-
-  const id=req.params.id
+  try {
+    const id=req.params.id
   const {bookName,bookPrice,bookAuthor}=req.body
   await books.update({
     bookName,
@@ -63,11 +87,20 @@ exports.updateBooks=async function(req,res){
   res.json({
     message:'books update sucessfully'
   })
+    
+  } catch (error) {
+
+    console.log('Something is wrong ')
+    
+  }
+
+  
 }
 
 exports.singleBook= async function(req,res){
 
-  const id=req.params.id
+  try {
+    const id=req.params.id
   const data= await books.findByPk(id)//Always return objects
 
   //Another method for finding books by it
@@ -83,6 +116,13 @@ exports.singleBook= async function(req,res){
     data,
     // datas
   })
+    
+  } catch (error) {
+    console.log('Something is wrong ');
+    
+  }
+
+  
 
 
 }
